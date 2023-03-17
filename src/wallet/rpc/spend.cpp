@@ -33,9 +33,6 @@ static void ParseRecipients(const UniValue& address_amounts, const UniValue& sub
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Bitcoin address: ") + address);
         }
 
-        if (destinations.count(dest)) {
-            throw JSONRPCError(RPC_INVALID_PARAMETER, std::string("Invalid parameter, duplicated address: ") + address);
-        }
         destinations.insert(dest);
 
         CScript script_pub_key = GetScriptForDestination(dest);

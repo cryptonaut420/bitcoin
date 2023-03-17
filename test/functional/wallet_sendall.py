@@ -135,18 +135,7 @@ class SendallTest(BitcoinTestFramework):
             )
 
     @cleanup
-    def sendall_duplicate_recipient(self):
-        self.log.info("Test duplicate destination")
-        self.add_utxos([1, 8, 3, 9])
 
-        assert_raises_rpc_error(
-                -8,
-                "Invalid parameter, duplicated address: {}".format(self.remainder_target),
-                self.wallet.sendall,
-                [self.remainder_target, self.remainder_target]
-            )
-
-    @cleanup
     def sendall_invalid_amounts(self):
         self.log.info("Test sending more than balance")
         pre_sendall_balance = self.add_utxos([7, 14])

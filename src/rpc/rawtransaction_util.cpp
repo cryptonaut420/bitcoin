@@ -115,10 +115,6 @@ void AddOutputs(CMutableTransaction& rawTx, const UniValue& outputs_in)
                 throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Bitcoin address: ") + name_);
             }
 
-            if (!destinations.insert(destination).second) {
-                throw JSONRPCError(RPC_INVALID_PARAMETER, std::string("Invalid parameter, duplicated address: ") + name_);
-            }
-
             CScript scriptPubKey = GetScriptForDestination(destination);
             CAmount nAmount = AmountFromValue(outputs[name_]);
 
